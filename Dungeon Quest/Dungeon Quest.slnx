@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Dungeon Quest/Dungeon Quest.vcxproj" Id="91bd4177-f719-4c52-bd52-5610319c3602" />
+</Solution>
