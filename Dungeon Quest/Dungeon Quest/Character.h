@@ -30,8 +30,4 @@ public:
 	void gainExperience(int XP);
 	int getHealth();
 	int getAttack();
-
-	
-
-
 };

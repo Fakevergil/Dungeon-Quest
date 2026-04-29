@@ -6,3 +6,7 @@ using namespace std;
 int Enemy::getXPrewards() {
 	return XPRewards;
 }
+
+void Enemy::chooseAction(Character& player) {
+	attackTarget(player);
+}

@@ -5,6 +5,7 @@
 using namespace std;
 
 class Enemy : public Character {
+protected:
 	int XPRewards;
 	Item* loot;
 public:
@@ -14,4 +15,5 @@ public:
 	}
 
 	int getXPrewards();
+	void chooseAction(Character& player);
 };
