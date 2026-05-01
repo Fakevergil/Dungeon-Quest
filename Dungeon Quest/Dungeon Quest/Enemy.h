@@ -15,5 +15,5 @@ public:
 	}
 
 	int getXPrewards();
-	void chooseAction(Character& player);
+	virtual void chooseAction(Character& player);
 };

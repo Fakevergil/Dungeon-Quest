@@ -20,6 +20,8 @@ void Character::attackTarget(Character& target){
     if (isAlive()) {
         target.takeDamage(attack);
         cout << name << " Attacked " << target.name << endl;
+        cout << "Damage Taken: " << target.attack << endl;
+        cout << "Health: " << getHealth() << endl;
     }
 }
 
@@ -27,8 +29,11 @@ void Character::gainExperience(int XP) {
     experience += XP;
 }
 int Character::getHealth() {
-    return maxHealth;
+    return health;
 }
 int Character::getAttack() {
     return attack;
+}
+string Character::getName() {
+    return name;
 }

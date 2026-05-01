@@ -24,10 +24,11 @@ public:
 		this->experience = experience;
 	}
 
-	void takeDamage(int damage);
+	virtual void takeDamage(int damage);
 	bool isAlive();
-	void attackTarget(Character& target);
+	virtual void attackTarget(Character& target);
 	void gainExperience(int XP);
 	int getHealth();
 	int getAttack();
+	string getName();
 };

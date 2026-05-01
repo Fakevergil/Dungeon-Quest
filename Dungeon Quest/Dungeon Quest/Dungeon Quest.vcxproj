@@ -133,8 +133,11 @@
     <ClCompile Include="Dungeon Quest.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Goblin.cpp" />
+    <ClCompile Include="Mage.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Rogue.cpp" />
     <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="Warrior.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
@@ -144,8 +147,11 @@
     <ClInclude Include="Goblin.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Mage.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rogue.h" />
     <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="Warrior.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -6,16 +6,21 @@
 #include "Goblin.h"
 #include "Skeleton.h"
 #include "Boss.h"
+#include "Warrior.h"
+#include "Mage.h"
+#include "Rogue.h"
 
 int main()
 {
-    Player player("Hero", 150, 150, 100, 200, 100, 0, 0, 0, 0,100, false);
+    Warrior warrior;
+    Mage mage;
+    Rogue rogue;
     Goblin goblin;
     Skeleton skeleton;
     Boss boss;
 
-    Battle::startBattle(player, goblin);
-    Battle::startBattle(player, skeleton);
-    Battle::startBattle(player, boss);
+    Battle::startBattle(mage, goblin);
+    Battle::startBattle(rogue, skeleton);
+    Battle::startBattle(warrior, boss);
 }
 

@@ -27,3 +27,6 @@ bool Player::leveledUp() {
 int Player::getLevel() {
 	return level;
 }
+string Player::getPlayerType() {
+	return playerType;
+}
