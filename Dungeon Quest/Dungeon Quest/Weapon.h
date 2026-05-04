@@ -4,9 +4,12 @@
 using namespace std;
 
 class Weapon : public Item {
-	int weaponBonus;
+	int attackBonus;
 public:
-	Weapon(string name, string description, int weapon) : Item(name, description) {
-		this->weaponBonus = weaponBonus;
+	Weapon(string name, string description, int attackBonus) : Item(name, description) {
+		this->attackBonus = attackBonus;
 	}
+
+	int getAttackBonus();
+	void use();
 };

@@ -10,5 +10,8 @@ public:
 		this->name = name;
 		this->description;
 	}
-	void virtual use();
+	virtual void use() = 0;
+
+	string getItemName();
+	string getItemDescription();
 };

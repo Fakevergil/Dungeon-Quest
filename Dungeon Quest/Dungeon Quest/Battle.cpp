@@ -6,6 +6,11 @@
 void Battle::startBattle(Player& player, Enemy& enemy) {
 	int playerMove;
 	bool playerFled = false;
+	bool firstAttack = player.getSpeed() >= enemy.getSpeed();
+	if (firstAttack) {
+		cout << enemy.getName() << " Attacks Firsts" << endl;
+		enemy.chooseAction(player);
+	}
 	while (player.isAlive() && enemy.isAlive()) {
 		cout << "What should i do?" << endl;
 		if (player.getPlayerType() == "Mage") {

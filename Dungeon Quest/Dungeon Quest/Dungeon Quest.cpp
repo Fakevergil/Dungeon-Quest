@@ -20,7 +20,7 @@ int main()
     Boss boss;
 
     Battle::startBattle(mage, goblin);
-    Battle::startBattle(rogue, skeleton);
-    Battle::startBattle(warrior, boss);
+    Battle::startBattle(mage, skeleton);
+    Battle::startBattle(mage, boss);
 }
 

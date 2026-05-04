@@ -31,4 +31,12 @@ public:
 	int getHealth();
 	int getAttack();
 	string getName();
+	int getDefence();
+	int getSpeed();
+	int getLevel();
+	int getMaxHealth();
+	void setHealth(int health);
+	void setAttack(int attack);
+	void setDefence(int defence);
+	virtual ~Character() = default;
 };

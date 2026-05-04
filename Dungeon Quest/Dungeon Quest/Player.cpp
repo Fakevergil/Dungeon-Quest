@@ -11,8 +11,10 @@ void Player::levelUp() {
 	while (experience >= thresHold) {
 		experience -= thresHold;
 		level++;
-		maxHealth += 50;
-		attack += 50;
+		maxHealth += 10;
+		attack += 3;
+		defence += 2;
+		health = maxHealth;
 		thresHold *= 2;
 		justLeveled = true;
 	}
