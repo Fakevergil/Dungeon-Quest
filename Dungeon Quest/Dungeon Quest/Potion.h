@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 #include "Item.h"
+#include "Player.h"
 using namespace std;
 
 class Potion : public Item {
@@ -14,7 +15,7 @@ public:
 		this->potionType = potionType;
 	}
 
-	void use();
+	void use(Player& player);
 	int getHealAmount();
 	int getManaAmount();
 	string getPotionType();

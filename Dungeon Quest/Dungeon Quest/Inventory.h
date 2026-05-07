@@ -2,14 +2,17 @@
 #include<vector>
 #include<string>
 #include "Item.h"
-#include "Weapon.h"
 using namespace std;
+
+class Weapon;
 
 class Inventory {
 	vector<Item*> items;
 	Weapon* equippedWeapon;
 public:
-    Inventory();
+    Inventory() {
+        this->equippedWeapon = nullptr;
+    }
     void addItem(Item* item);
     void removeItem(int index);
     void equipWeapon(Weapon* weapon);

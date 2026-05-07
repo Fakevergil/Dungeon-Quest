@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 #include "Item.h"
+#include "Player.h"
 using namespace std;
 
 class Weapon : public Item {
@@ -11,5 +12,5 @@ public:
 	}
 
 	int getAttackBonus();
-	void use();
+	void use(Player& player);
 };

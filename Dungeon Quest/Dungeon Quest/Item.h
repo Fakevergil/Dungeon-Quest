@@ -2,6 +2,7 @@
 #include<string>
 using namespace std;
 
+class Player;
 class Item {
 	string name;
 	string description;
@@ -10,7 +11,7 @@ public:
 		this->name = name;
 		this->description;
 	}
-	virtual void use() = 0;
+	virtual void use(Player& player) = 0;
 
 	string getItemName();
 	string getItemDescription();

@@ -32,3 +32,37 @@ int Player::getLevel() {
 string Player::getPlayerType() {
 	return playerType;
 }
+int Player::getMana() {
+	return mana;
+}
+int Player::getMaxMana() {
+	return maxMana;
+}
+void Player::setMana(int mana) {
+	this->mana = mana;
+}
+Inventory& Player::getInventory() {
+	return inventory;
+}
+Weapon* Player::getEquippedWeapon() {
+	return equippedWeapon;
+}
+void Player::equipWeapon(Weapon* weapon) {
+	this->equippedWeapon = weapon;
+}
+void Player::useItem(int index) {
+	Item* item = inventory.getItem(index);
+	if (item != nullptr) {
+		item->use(*this);
+		inventory.removeItem(index);
+	}
+}
+void Player::restoreMana(int amount) {
+	mana += amount;
+	if (mana > maxMana) {
+		mana = maxMana;
+	}
+}
+void Player::useMana(int amount) {
+	mana -= amount;
+}
