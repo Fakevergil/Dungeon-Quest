@@ -10,3 +10,6 @@ int Enemy::getXPrewards() {
 void Enemy::chooseAction(Character& player) {
 	attackTarget(player);
 }
+void Enemy::setLoot(Item* item) {
+	loot = item;
+}

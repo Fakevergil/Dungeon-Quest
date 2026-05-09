@@ -9,6 +9,7 @@
 #include "Warrior.h"
 #include "Mage.h"
 #include "Rogue.h"
+#include "Dungeon.h"
 
 int main()
 {
@@ -19,8 +20,8 @@ int main()
     Skeleton skeleton;
     Boss boss;
 
-    Battle::startBattle(mage, goblin);
-    Battle::startBattle(mage, skeleton);
-    Battle::startBattle(mage, boss);
+    Dungeon dungeon;
+    dungeon.generateFloor();
+    dungeon.printMap();
 }
 

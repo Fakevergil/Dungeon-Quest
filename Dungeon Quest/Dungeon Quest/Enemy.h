@@ -12,8 +12,10 @@ public:
 	Enemy(string name, int health, int maxHealth, int attack, int defence, int speed, int level, int experience, int XPRewards)
 		:Character(name, health, maxHealth, attack, defence, speed, level, experience) {
 		this->XPRewards = XPRewards;
+		this->loot = nullptr;
 	}
 
 	int getXPrewards();
+	void setLoot(Item* item);
 	virtual void chooseAction(Character& player);
 };
