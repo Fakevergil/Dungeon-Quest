@@ -204,3 +204,7 @@ void Dungeon::printMap() {
 	}
 	cout << "   +--------+--------+--------+--------+" << endl;
 }
+
+Room* Dungeon::getRoom(int x, int y) {
+	return grid[y][x];
+}
