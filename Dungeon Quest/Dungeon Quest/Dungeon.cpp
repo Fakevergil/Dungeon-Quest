@@ -7,12 +7,14 @@
 #include "Potion.h"
 #include "Weapon.h"
 #include "Player.h"
+#include "Battle.h"
 using namespace std;
 
 Dungeon::Dungeon() {
 	playerX = 0;
 	playerY = 0;
 	currentFloor = 1;
+	generateFloor();
 }
 
 int Dungeon::getPlayerX() {
@@ -143,26 +145,59 @@ void Dungeon::generateFloor() {
 					}
 				}
 			}
-			else if (grid[i][j]->getRoomType() == "Heal") {
-				cout << "You found a healing shrine" << endl;
-			}
 		}
 	}
 }
 
-void Dungeon::movePlayer(char direction) {
+void Dungeon::movePlayer(char direction, Player& player) {
 	int newX = playerX;
 	int newY = playerY;
 
-	if (direction == 'w') newY--;
-	else if (direction == 's') newY++;
-	else if (direction == 'd') newX++;
-	else if (direction == 'a') newX--;
+	if (direction == 'w') {
+		newY--;
+	}
+	else if (direction == 's') {
+		newY++;
+	}
+	else if (direction == 'd') {
+		newX++;
+	}
+	else if (direction == 'a') {
+		newX--;
+	}
 
 	if (isValidMove(newX, newY)) {
 		playerX = newX;
 		playerY = newY;
 		grid[playerY][playerX]->setVisited(true);
+		if (grid[playerY][playerX]->getRoomType() == "Combat") {
+			Enemy* enemy = grid[playerY][playerX]->getEnemy();
+			Battle::startBattle(player, *enemy);
+		}
+		else if (grid[playerY][playerX]->getRoomType() == "Loot") {
+			Item* item = grid[playerY][playerX]->getItem();
+			if (item != nullptr) {
+				player.getInventory().addItem(item);
+				cout << "You found: " << item->getItemName() << endl;
+				grid[playerY][playerX]->setItem(nullptr);
+			}
+		}
+		else if (grid[playerY][playerX]->getRoomType() == "Heal") {
+			player.setHealth(player.getMaxHealth());
+			cout << "You found a healing shrine. Health fully restored!" << endl;
+		}
+		else if (grid[playerY][playerX]->getRoomType() == "Exit") {
+			if (currentFloor == 3) {
+				cout << "You defeated the dungeon! You win!" << endl;
+			}
+			else {
+				currentFloor++;
+				playerX = 0;
+				playerY = 0;
+				generateFloor();
+				cout << "You descended to floor " << currentFloor << endl;
+			}
+		}
 	}
 	else {
 		cout << "You can't move that way." << endl;
@@ -188,6 +223,9 @@ void Dungeon::printMap() {
 				}
 				else if (grid[i][j]->getRoomType() == "Heal") {
 					cout << "   |   H ";
+				}
+				else if (grid[i][j]->getRoomType() == "Empty") {
+					cout << "   |   . ";
 				}
 			}
 			else if (grid[i][j]->getIsRevealed()) {

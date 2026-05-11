@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 #include "Room.h"
+#include "Player.h"
 using namespace std;
 
 class Dungeon {
@@ -11,7 +12,7 @@ class Dungeon {
 public:
 	Dungeon();
 
-    void movePlayer(char direction);
+    void movePlayer(char direction, Player& player);
     void printMap();
     void generateFloor();
     bool isValidMove(int newX, int newY);
