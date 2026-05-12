@@ -1,27 +1,16 @@
-#include <iostream>
-#include "Character.h"
-#include "Battle.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "Goblin.h"
-#include "Skeleton.h"
-#include "Boss.h"
+#include<iostream>
+#include<string>
+#include<cstdlib>
+#include "Dungeon.h"
 #include "Warrior.h"
 #include "Mage.h"
 #include "Rogue.h"
-#include "Dungeon.h"
+#include "Game.h"
+using namespace std;
 
-int main()
-{
-    Warrior warrior;
-    Mage mage;
-    Rogue rogue;
-    Goblin goblin;
-    Skeleton skeleton;
-    Boss boss;
+int main() {
+	Game game;
+	game.run();
 
-    Dungeon dungeon;
-    dungeon.generateFloor();
-    dungeon.printMap();
+	return 0;
 }
-

@@ -204,7 +204,9 @@ void Dungeon::movePlayer(char direction, Player& player) {
 	}
 }
 
-void Dungeon::printMap() {
+void Dungeon::printMap(Player& player) {
+	cout << " @ = YOU  E = ENEMY ROOM  L = LOOT ROOM  X = EXIT" << endl;
+	cout << "    ? = UNDISCOVERED ROOM  # = HIDDEN ROOM" << endl;
 	for (int i = 0; i < 4; i++) {
 		cout << "   +--------+--------+--------+--------+" << endl;
 		for (int j = 0; j < 4; j++) {
@@ -240,7 +242,13 @@ void Dungeon::printMap() {
 		cout << endl;
 		
 	}
-	cout << "   +--------+--------+--------+--------+" << endl;
+	cout << "   +--------+--------+--------+--------+\n" << endl;
+	cout << "   -------------------------------------" << endl;
+	cout << "   NAME: "<<player.getName() << "  HP: " << player.getHealth() << "/" << player.getMaxHealth() << "  ATK: " << player.getAttack()
+		 << "  DEF: " << player.getDefence() << "  LVL: " << player.getLevel()
+		<< endl;
+	cout << "   HP: " << player.getHealth() << "/" << player.getMaxHealth()
+		<< endl;
 }
 
 Room* Dungeon::getRoom(int x, int y) {
