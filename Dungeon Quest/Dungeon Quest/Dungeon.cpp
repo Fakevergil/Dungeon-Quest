@@ -243,12 +243,14 @@ void Dungeon::printMap(Player& player) {
 		
 	}
 	cout << "   +--------+--------+--------+--------+\n" << endl;
-	cout << "   -------------------------------------" << endl;
+	cout << "   --------------------------------------------" << endl;
 	cout << "   NAME: "<<player.getName() << "  HP: " << player.getHealth() << "/" << player.getMaxHealth() << "  ATK: " << player.getAttack()
-		 << "  DEF: " << player.getDefence() << "  LVL: " << player.getLevel()
+		 << "  DEF: " << player.getDefence() 
 		<< endl;
-	cout << "   HP: " << player.getHealth() << "/" << player.getMaxHealth()
+	cout << "   SPEED: " << player.getSpeed() << "  LVL: " << player.getLevel()
 		<< endl;
+	cout << "   USE THE 'WASD'"<< endl;
+	cout << "   --------------------------------------------" << endl;
 }
 
 Room* Dungeon::getRoom(int x, int y) {
