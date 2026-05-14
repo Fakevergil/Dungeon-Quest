@@ -66,7 +66,12 @@ void Game::run() {
 		char playerMove;
 		cin >> playerMove;
 
-		dungeon.movePlayer(playerMove, *player);
+		if (playerMove == 'i') {
+			player->getInventory().displayItems(*player);
+		}
+		else {
+			dungeon.movePlayer(playerMove, *player);
+		}
 	}
 	
 	

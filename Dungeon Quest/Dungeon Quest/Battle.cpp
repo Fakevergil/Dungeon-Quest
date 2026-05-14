@@ -2,6 +2,7 @@
 #include<string>
 #include "Battle.h"
 #include "Mage.h"
+#include "Inventory.h"
 
 void Battle::startBattle(Player& player, Enemy& enemy) {
 	int playerMove;
@@ -48,6 +49,31 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 				{
 					enemy.chooseAction(player);
 				}
+			}
+			else if (playerMove == 2) {
+				Inventory& inventory = player.getInventory();
+				if (inventory.getSize() <= 0) {
+					cout << " YOU HAVE NO ITEMS IN YOUR INVENTORY\n" << endl;
+				}
+				else {
+					for (int i = 0; i < inventory.getSize(); i++) {
+						Item* items = inventory.getItem(i);
+						cout <<" " << i+1 << ") NAME: " << items[i].getItemName() << endl;
+						cout << " DESCRIPTION: " << items[i].getItemDescription() << "\n" << endl;
+					}
+				}
+				int choice;
+				if(inventory.getSize() != 0){
+					cout << "YOU WISH TO USE AN ITEM? (0 TO CANCEL)";
+					cin >> choice;
+					if (choice != 0) {
+						Item* items = inventory.getItem(choice - 1);
+						cout << "YOU USED: " << items[choice - 1].getItemName() << endl;
+						player.useItem(choice - 1);
+						
+					}
+				}
+				
 			}
 			else if (playerMove == 3) {
 				playerFled = true;

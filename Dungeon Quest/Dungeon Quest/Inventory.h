@@ -16,7 +16,7 @@ public:
     void addItem(Item* item);
     void removeItem(int index);
     void equipWeapon(Weapon* weapon);
-    void displayItems();
+    void displayItems(Player& player);
     Item* getItem(int index);
     Weapon* getEquippedWeapon();
     int getSize();

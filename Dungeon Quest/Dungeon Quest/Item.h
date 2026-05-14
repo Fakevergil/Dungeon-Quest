@@ -9,7 +9,7 @@ class Item {
 public:
 	Item(string name, string description) {
 		this->name = name;
-		this->description;
+		this->description = description;
 	}
 	virtual void use(Player& player) = 0;
 

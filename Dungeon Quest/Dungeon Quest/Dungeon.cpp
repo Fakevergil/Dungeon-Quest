@@ -249,7 +249,8 @@ void Dungeon::printMap(Player& player) {
 		<< endl;
 	cout << "   SPEED: " << player.getSpeed() << "  LVL: " << player.getLevel()
 		<< endl;
-	cout << "   USE THE 'WASD'"<< endl;
+	cout << "   USE THE 'WASD TO MOVE'"<< endl;
+	cout << "   PRESS 'I' TO VIEW YOUR INVENTORY" << endl;
 	cout << "   --------------------------------------------" << endl;
 }
 
