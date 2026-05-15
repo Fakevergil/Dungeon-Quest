@@ -48,7 +48,12 @@ Weapon* Player::getEquippedWeapon() {
 	return equippedWeapon;
 }
 void Player::equipWeapon(Weapon* weapon) {
-	this->equippedWeapon = weapon;
+	if (equippedWeapon != nullptr) {
+		setAttack(getAttack() - equippedWeapon->getAttackBonus());
+	}
+	equippedWeapon = weapon;
+	inventory.equipWeapon(weapon);
+	setAttack(getAttack() + weapon->getAttackBonus());
 }
 void Player::useItem(int index) {
 	Item* item = inventory.getItem(index);

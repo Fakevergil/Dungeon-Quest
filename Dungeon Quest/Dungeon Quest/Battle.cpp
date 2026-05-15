@@ -58,8 +58,8 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 				else {
 					for (int i = 0; i < inventory.getSize(); i++) {
 						Item* items = inventory.getItem(i);
-						cout <<" " << i+1 << ") NAME: " << items[i].getItemName() << endl;
-						cout << " DESCRIPTION: " << items[i].getItemDescription() << "\n" << endl;
+						cout <<" " << i+1 << ") NAME: " << items->getItemName() << endl;
+						cout << " DESCRIPTION: " << items->getItemDescription() << "\n" << endl;
 					}
 				}
 				int choice;
@@ -68,7 +68,7 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 					cin >> choice;
 					if (choice != 0) {
 						Item* items = inventory.getItem(choice - 1);
-						cout << "YOU USED: " << items[choice - 1].getItemName() << endl;
+						cout << "YOU USED: " << items->getItemName() << endl;
 						player.useItem(choice - 1);
 						
 					}

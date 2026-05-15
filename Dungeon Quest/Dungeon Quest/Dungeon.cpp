@@ -205,6 +205,7 @@ void Dungeon::movePlayer(char direction, Player& player) {
 }
 
 void Dungeon::printMap(Player& player) {
+	Inventory& weapon = player.getInventory();
 	cout << " @ = YOU  E = ENEMY ROOM  L = LOOT ROOM  X = EXIT" << endl;
 	cout << "    ? = UNDISCOVERED ROOM  # = HIDDEN ROOM" << endl;
 	for (int i = 0; i < 4; i++) {
@@ -247,8 +248,10 @@ void Dungeon::printMap(Player& player) {
 	cout << "   NAME: "<<player.getName() << "  HP: " << player.getHealth() << "/" << player.getMaxHealth() << "  ATK: " << player.getAttack()
 		 << "  DEF: " << player.getDefence() 
 		<< endl;
-	cout << "   SPEED: " << player.getSpeed() << "  LVL: " << player.getLevel()
-		<< endl;
+	cout << "   SPEED: " << player.getSpeed() << "  LVL: " << player.getLevel();
+	if(weapon.getEquippedWeapon() != nullptr){
+		cout << "  EQUIPPED WEAPON: " << weapon.getEquippedWeapon()->getItemName() << "\n" << endl;
+	}
 	cout << "   USE THE 'WASD TO MOVE'"<< endl;
 	cout << "   PRESS 'I' TO VIEW YOUR INVENTORY" << endl;
 	cout << "   --------------------------------------------" << endl;
