@@ -22,9 +22,6 @@ void Character::attackTarget(Character& target){
     if (isAlive()) {
         int actualDamage = max(1, attack - target.getDefence());
         target.takeDamage(attack);
-        cout << name << " Attacked " << target.getName() << endl;
-        cout << "Damage Taken: " << actualDamage << endl;
-        cout << target.getName() << " Health: " << target.getHealth() << endl;
     }
 }
 

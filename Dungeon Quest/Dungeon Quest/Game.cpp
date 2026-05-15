@@ -72,6 +72,14 @@ void Game::run() {
 		else {
 			dungeon.movePlayer(playerMove, *player);
 		}
+
+		if (!player->isAlive()) {
+			cout << "  YOU LOST" << endl;
+			break;
+		}
+		if (dungeon.isGameWon() == true) {
+			break;
+		}
 	}
 	
 	

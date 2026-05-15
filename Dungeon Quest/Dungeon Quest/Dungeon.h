@@ -8,6 +8,7 @@ class Dungeon {
 	int playerX;
 	int playerY;
 	int currentFloor;
+    bool gameWon;
 public:
 	Dungeon();
 
@@ -18,5 +19,6 @@ public:
     int getPlayerX();
     int getPlayerY();
     int getCurrentFloor();
+    bool isGameWon();
     Room* getRoom(int x, int y);
 };

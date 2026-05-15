@@ -11,14 +11,12 @@ void Mage::castSpell(Character& enemy) {
 	if (mana >= 20) {
 		int actualDamage = max(1, attack - enemy.getDefence());
 		enemy.takeDamage(attack);
-		cout << name << " Attacked " << enemy.getName() << endl;
-		cout << "Damage Taken: " << actualDamage << endl;
-		cout << enemy.getName() << " Health: " << enemy.getHealth() << endl;
+		cout << "  " << getName() << " ATTACKED " << enemy.getName() << endl;
 		enemy.takeDamage(attack * 3.5);
 		mana -= 20;
 	}
 	else
 	{
-		cout << "Not Enough Mana To Cast Spell" << endl;
+		cout << "  NOT ENOUGH MANA TO CAST A SPELL" << endl;
 	}
 }

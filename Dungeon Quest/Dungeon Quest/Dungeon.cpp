@@ -14,6 +14,7 @@ Dungeon::Dungeon() {
 	playerX = 0;
 	playerY = 0;
 	currentFloor = 1;
+	gameWon = false;
 	generateFloor();
 }
 
@@ -147,6 +148,19 @@ void Dungeon::generateFloor() {
 			}
 		}
 	}
+	if (currentFloor == 3) {
+		Boss* boss = new Boss();
+		boss->setLoot(new Weapon("Shadow Fang", "A mysterious blade said to be forged in darkness", 30));
+		grid[2][2] = new Room("Combat", false, false, boss, nullptr);
+		if (!boss->isAlive())
+		{
+			gameWon = true;
+		}
+	}
+}
+
+bool Dungeon::isGameWon() {
+	return gameWon;
 }
 
 void Dungeon::movePlayer(char direction, Player& player) {

@@ -8,24 +8,44 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 	int playerMove;
 	bool playerFled = false;
 	bool firstAttack = player.getSpeed() >= enemy.getSpeed();
-	if (firstAttack) {
-		cout << enemy.getName() << " Attacks Firsts" << endl;
-		enemy.chooseAction(player);
-	}
+	
 	while (player.isAlive() && enemy.isAlive()) {
-		cout << "What should i do?" << endl;
+		cout << "  ====================" << endl;
+		cout << "        BATTLE" << endl;
+		cout << "  ====================\n" << endl;
+
+		cout << "  ENEMY: " << enemy.getName() << endl;
+		cout << "  HP: " << enemy.getHealth()<<"/"<<enemy.getMaxHealth()<< "\n" << endl;
+		cout << "  --------------------"<<"\n" << endl;
+
+		cout << "  YOU: " << player.getName() << endl;
+		cout << "  HP: " << player.getHealth() << "/" << player.getMaxHealth() << endl;
+		cout << "  MANA: " << player.getMana() << "/" << player.getMaxMana() << "\n" << endl;
+		cout << "  ATK: " << player.getAttack() << "  DEF: " << player.getDefence() << "\n" << endl;
+		cout << "  --------------------" << "\n" << endl;
+
+		if (firstAttack) {
+			cout<<" " << enemy.getName() << " ATTACKS FIRST" << endl;
+			enemy.chooseAction(player);
+		}
+		cout << "  WHAT SHOULD I DO?\n" << endl;
 		if (player.getPlayerType() == "Mage") {
 			Mage& mage = dynamic_cast<Mage&>(player);
-			cout << "1) Attack" <<"\n2) Cast Spell" << "\n3) Use Item" << "\n4) Flee" << endl;
+			cout << "  [1] Attack" <<"\n  [2] Cast Spell" << "\n  [3] Use Item" << "\n  [4] Flee" << endl;
 			cin >> playerMove;
 			if (playerMove == 1) {
+				cout << "  " << player.getName() << " ATTACKED " << enemy.getName() << endl;
+				cout << "  --------------------" << "\n" << endl;
 				player.attackTarget(enemy);
 				if (!enemy.isAlive()) {
 					break;
 				}
 				else
 				{
+					cout << "  " << enemy.getName() << " ATTACKED " << player.getName() << endl;
+					cout << "  --------------------" << "\n" << endl;
 					enemy.chooseAction(player);
+					
 				}
 			}
 			else if( playerMove == 2){
@@ -38,15 +58,19 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 
 		}
 		else {
-			cout << "1) Attack" << "\n" << "2) Use Item" << "\n" << "3) Flee" << endl;
+			cout << "  [1] Attack" << "\n" << "  [2] Use Item" << "\n" << "  [3] Flee" << endl;
 			cin >> playerMove;
 			if (playerMove == 1) {
+				cout << "  " << player.getName() << " ATTACKED " << enemy.getName() << endl;
+				cout << "  --------------------" << "\n" << endl;
 				player.attackTarget(enemy);
 				if (!enemy.isAlive()) {
 					break;
 				}
 				else
 				{
+					cout << "  " << enemy.getName() << " ATTACKED " << player.getName() << endl;
+					cout << "  --------------------" << "\n" << endl;
 					enemy.chooseAction(player);
 				}
 			}
@@ -83,7 +107,7 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 		
 	}
 	if (playerFled == true) {
-		cout << "You chose flee." << "\n" << "You fled the battle...." << endl;
+		cout << "  YOU CHOSE TO FLEE." << "\n" << "  YOU FLED THE BATTLE...." << endl;
 	}
 	else
 	{
@@ -93,18 +117,20 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 
 void Battle::battleOutcome(Player& player, Enemy& enemy) {
 	if (player.isAlive()) {
-		cout <<player.getName() << " Wins" << endl;
+		cout << "  " << player.getName() << " WINS" << endl;
 		player.gainExperience(enemy.getXPrewards());
-		cout << "XP Gained: " << enemy.getXPrewards() << endl;
-		cout << "Total XP: " << player.getXPPoints() << endl;
+		cout << "  XP GAINED: " << enemy.getXPrewards() << endl;
+		cout << "  TOTAL XP: " << player.getXPPoints() << endl;
+		cout << "  --------------------" << "\n" << endl;
 		player.levelUp();
 		if (player.leveledUp()) {
-			cout << "Leveled Up: " << player.getLevel() << endl;
-			cout << "Max Health Increased: " << player.getHealth() << endl;
-			cout << "Attack Increased: " << player.getAttack() << endl;
+			cout << "  LEVELED UP: " << player.getLevel() << endl;
+			cout << "  MAX HEALTH INCREASED: " << player.getHealth() << endl;
+			cout << "  ATTACK INCREASED: " << player.getAttack() << endl;
+			cout << "  --------------------" << "\n" << endl;
 		}
 	}
 	if (enemy.isAlive()) {
-		cout << enemy.getName() << " Wins" << endl;
+		cout << "  " << enemy.getName() << " WINS" << endl;
 	}
 }
