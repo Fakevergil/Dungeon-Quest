@@ -201,8 +201,12 @@ void Dungeon::movePlayer(char direction, Player& player) {
 			cout << "You found a healing shrine. Health fully restored!" << endl;
 		}
 		else if (grid[playerY][playerX]->getRoomType() == "Exit") {
-			if (currentFloor == 3) {
-				cout << "You defeated the dungeon! You win!" << endl;
+			if (currentFloor == 3 && !isGameWon()) {
+				cout << "  YOU CANNOT LEAVE THE DUNGEON YET" << endl;
+			}
+			else if (currentFloor == 3 && isGameWon())
+			{
+				cout << "  YOU DEFEATED THE DUNGEON! YOU WIN" << endl;
 			}
 			else {
 				currentFloor++;
