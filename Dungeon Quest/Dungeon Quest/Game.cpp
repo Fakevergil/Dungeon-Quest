@@ -37,28 +37,24 @@ void Game::run() {
 
 	Player* player = nullptr;
 
-	while(true){
-		int heroSelect;
-		cout << " Select: ";
-		cin >> heroSelect;
+	int heroSelect;
+	cout << " Select: ";
+
+	while (!(cin >> heroSelect) || heroSelect < 1 || heroSelect > 3) {
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << " Invalid input. Choose 1, 2 or 3: ";
+	}
 
 		if (heroSelect == 1) {
 			player = new Warrior();
-			break;
 		}
 		else if (heroSelect == 2) {
 			player = new Mage();
-			break;
 		}
 		else if (heroSelect == 3) {
 			player = new Rogue();
-			break;
 		}
-		else
-		{
-			cout << " Choose Correct Option." << endl;
-		}
-	}
 
 	Dungeon dungeon;
 
