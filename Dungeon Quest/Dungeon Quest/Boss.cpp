@@ -4,7 +4,7 @@
 #include "Player.h"
 using namespace std;
 
-Boss::Boss() : Enemy("Boss", 150, 150, 25, 15, 8, 1, 0, 100) {
+Boss::Boss() : Enemy("Argosax, The Chaos", 150, 150, 25, 15, 8, 1, 0, 100) {
 }
 
 void Boss::chooseAction(Character& player) {
