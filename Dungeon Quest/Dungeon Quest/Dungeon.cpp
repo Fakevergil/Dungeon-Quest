@@ -192,17 +192,26 @@ void Dungeon::movePlayer(char direction, Player& player) {
 			Item* item = grid[playerY][playerX]->getItem();
 			if (item != nullptr) {
 				player.getInventory().addItem(item);
-				cout << "You found: " << item->getItemName() << endl;
+				cout << "  YOU FOUND: " << item->getItemName() << endl;
 				grid[playerY][playerX]->setItem(nullptr);
+				cout << "  PRESS ENTER TO CONTINUE...";
+				cin.ignore();
+				cin.get();
 			}
 		}
 		else if (grid[playerY][playerX]->getRoomType() == "Heal") {
 			player.setHealth(player.getMaxHealth());
-			cout << "You found a healing shrine. Health fully restored!" << endl;
+			cout << "  YOU FOUND A HEALING SHRINE, HEALTH FULLY RESTORED!" << endl;
+			cout << "  PRESS ENTER TO CONTINUE...";
+			cin.ignore();
+			cin.get();
 		}
 		else if (grid[playerY][playerX]->getRoomType() == "Exit") {
 			if (currentFloor == 3 && !isGameWon()) {
 				cout << "  YOU CANNOT LEAVE THE DUNGEON YET" << endl;
+				cout << "  PRESS ENTER TO CONTINUE...";
+				cin.ignore();
+				cin.get();
 			}
 			else if (currentFloor == 3 && isGameWon())
 			{
@@ -213,16 +222,23 @@ void Dungeon::movePlayer(char direction, Player& player) {
 				playerX = 0;
 				playerY = 0;
 				generateFloor();
-				cout << "You descended to floor " << currentFloor << endl;
+				cout << "  YOU DECENDED TO FLOOR " << currentFloor << endl;
+				cout << "  PRESS ENTER TO CONTINUE...";
+				cin.ignore();
+				cin.get();
 			}
 		}
 	}
 	else {
-		cout << "You can't move that way." << endl;
+		cout << "  YOU CAN'T MOVE THAT WAY" << endl;
+		cout << "  PRESS ENTER TO CONTINUE...";
+		cin.ignore();
+		cin.get();
 	}
 }
 
 void Dungeon::printMap(Player& player) {
+	system("cls");
 	Inventory& weapon = player.getInventory();
 	cout << " @ = YOU  E = ENEMY ROOM  L = LOOT ROOM  X = EXIT" << endl;
 	cout << "    ? = UNDISCOVERED ROOM  # = HIDDEN ROOM" << endl;

@@ -1,11 +1,12 @@
 #include<iostream>
 #include<string>
-
+#include <ctime>
 #include <iomanip>
 #include "Game.h"
 using namespace std;
 
 void Game::run() {
+	srand(time(nullptr));
 	cout << "     +---------------------------------+" << endl;
 	cout << "     |          DUNGEON QUEST          |" << endl;
 	cout << "     |      THE DUNGEON AWAITS YOU     |" << endl;

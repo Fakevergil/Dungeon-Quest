@@ -25,25 +25,37 @@ void Inventory::equipWeapon(Weapon* weapon) {
 }
 
 void Inventory::displayItems(Player& player) {
-	if (getSize() <= 0) {
-		cout << " YOU HAVE NO ITEMS IN YOUR INVENTORY\n" << endl;
-	}
-	else {
-		for (int i = 0; i < getSize(); i++) {
-			cout << " " << i + 1 << ") NAME: " << items[i]->getItemName() << endl;
-			cout << " DESCRIPTION: " << items[i]->getItemDescription()<<"\n" << endl;
-		}
-	}
-	int choice;
-	if (getSize() != 0) {
-		cout << "YOU WISH TO USE AN ITEM? (0 TO CANCEL)";
-		cin >> choice;
-		if (choice != 0) {
-			cout << "YOU USED: " << items[choice - 1]->getItemName() << endl;
-			player.useItem(choice - 1);
-			
-		}
-	}
+    cout << "  +------------------------------------------+" << endl;
+    cout << "  |              INVENTORY                   |" << endl;
+    cout << "  +------------------------------------------+" << endl;
+
+    if (getSize() <= 0) {
+        cout << "  | YOUR INVENTORY IS EMPTY                  |" << endl;
+        cout << "  +------------------------------------------+" << endl;
+        cout << "  PRESS ENTER TO CONTINUE...";
+        cin.ignore();
+        cin.get();
+        return;
+    }
+
+    for (int i = 0; i < getSize(); i++) {
+        cout << "  | [" << i + 1 << "] " << items[i]->getItemName() << endl;
+        cout << "  |     " << items[i]->getItemDescription() << endl;
+        cout << "  |" << endl;
+    }
+    cout << "  +------------------------------------------+" << endl;
+    cout << "  SELECT ITEM TO USE (0 TO CANCEL): ";
+
+    int choice;
+    cin >> choice;
+    if (choice != 0 && choice <= getSize()) {
+        string itemName = items[choice - 1]->getItemName();
+        player.useItem(choice - 1);
+        cout << "  >> YOU USED: " << itemName << "!" << endl;
+    }
+    cout << "  PRESS ENTER TO CONTINUE...";
+    cin.ignore();
+    cin.get();
 }
 
 Item* Inventory::getItem(int index) {
