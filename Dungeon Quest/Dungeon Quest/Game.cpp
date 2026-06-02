@@ -62,6 +62,7 @@ void Game::run() {
 		dungeon.printMap(*player);
 		char playerMove;
 		cin >> playerMove;
+		cin.ignore(1000, '\n');
 
 		if (playerMove == 'i') {
 			player->getInventory().displayItems(*player);

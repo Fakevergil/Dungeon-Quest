@@ -8,7 +8,7 @@
 #include "Weapon.h"
 #include "Player.h"
 #include "Battle.h"
-using namespace std;
+using std::cout;
 
 Dungeon::Dungeon() {
 	playerX = 0;
@@ -152,10 +152,6 @@ void Dungeon::generateFloor() {
 		Boss* boss = new Boss();
 		boss->setLoot(new Weapon("Shadow Fang", "A mysterious blade said to be forged in darkness", 30));
 		grid[2][2] = new Room("Combat", false, false, boss, nullptr);
-		if (!boss->isAlive())
-		{
-			gameWon = true;
-		}
 	}
 }
 
@@ -186,7 +182,13 @@ void Dungeon::movePlayer(char direction, Player& player) {
 		grid[playerY][playerX]->setVisited(true);
 		if (grid[playerY][playerX]->getRoomType() == "Combat") {
 			Enemy* enemy = grid[playerY][playerX]->getEnemy();
-			Battle::startBattle(player, *enemy);
+			if (enemy->isAlive()) {
+				Battle::startBattle(player, *enemy);
+			}
+
+			if (currentFloor == 3 && playerX == 2 && playerY == 2 && !enemy->isAlive()) {
+				gameWon = true;
+			}
 		}
 		else if (grid[playerY][playerX]->getRoomType() == "Loot") {
 			Item* item = grid[playerY][playerX]->getItem();
@@ -207,6 +209,7 @@ void Dungeon::movePlayer(char direction, Player& player) {
 			cin.get();
 		}
 		else if (grid[playerY][playerX]->getRoomType() == "Exit") {
+			Boss* boss;
 			if (currentFloor == 3 && !isGameWon()) {
 				cout << "  YOU CANNOT LEAVE THE DUNGEON YET" << endl;
 				cout << "  PRESS ENTER TO CONTINUE...";

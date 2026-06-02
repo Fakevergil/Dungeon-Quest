@@ -119,6 +119,9 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 				if (!enemy.isAlive()) break;
 				cout << "\n  >> " << enemy.getName() << " RETALIATES!" << endl;
 				enemy.chooseAction(player);
+				cout << "  PRESS ENTER TO CONTINUE...";
+				cin.ignore();
+				cin.get();
 			}
 			else if (playerMove == 2) {
 				Inventory& inventory = player.getInventory();
