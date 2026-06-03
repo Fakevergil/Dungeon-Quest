@@ -247,7 +247,7 @@ void Dungeon::movePlayer(char direction, Player& player) {
 		playerX = newX;
 		playerY = newY;
 
-		// Mark room as visited
+		bool wasVisited = grid[playerY][playerX]->getIsVisited();
 		grid[playerY][playerX]->setVisited(true);
 
 		// Combat room logic
@@ -286,18 +286,12 @@ void Dungeon::movePlayer(char direction, Player& player) {
 		}
 
 		// Healing room logic
-		else if (grid[playerY][playerX]->getRoomType() == "Heal") {
-
-			// Intended to heal only once
-			if (!grid[playerY][playerX]->getIsVisited()) {
-				player.setHealth(player.getMaxHealth());
-
-				cout << "  YOU FOUND A HEALING SHRINE, HEALTH FULLY RESTORED!" << endl;
-
-				cout << "  PRESS ENTER TO CONTINUE...";
-				cin.ignore();
-				cin.get();
-			}
+		else if (grid[playerY][playerX]->getRoomType() == "Heal" && !wasVisited) {
+			player.setHealth(player.getMaxHealth());
+			cout << "  YOU FOUND A HEALING SHRINE, HEALTH FULLY RESTORED!" << endl;
+			cout << "  PRESS ENTER TO CONTINUE...";
+			cin.ignore();
+			cin.get();
 		}
 
 		// Exit room logic
