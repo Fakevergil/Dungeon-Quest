@@ -280,7 +280,6 @@ void Dungeon::movePlayer(char direction, Player& player) {
 				grid[playerY][playerX]->setItem(nullptr);
 
 				cout << "  PRESS ENTER TO CONTINUE...";
-				cin.ignore();
 				cin.get();
 			}
 		}
@@ -290,7 +289,6 @@ void Dungeon::movePlayer(char direction, Player& player) {
 			player.setHealth(player.getMaxHealth());
 			cout << "  YOU FOUND A HEALING SHRINE, HEALTH FULLY RESTORED!" << endl;
 			cout << "  PRESS ENTER TO CONTINUE...";
-			cin.ignore();
 			cin.get();
 		}
 
@@ -304,7 +302,6 @@ void Dungeon::movePlayer(char direction, Player& player) {
 				cout << "  YOU CANNOT LEAVE THE DUNGEON YET" << endl;
 
 				cout << "  PRESS ENTER TO CONTINUE...";
-				cin.ignore();
 				cin.get();
 			}
 
@@ -325,7 +322,6 @@ void Dungeon::movePlayer(char direction, Player& player) {
 				cout << "  YOU DECENDED TO FLOOR " << currentFloor << endl;
 
 				cout << "  PRESS ENTER TO CONTINUE...";
-				cin.ignore();
 				cin.get();
 			}
 		}
@@ -335,7 +331,6 @@ void Dungeon::movePlayer(char direction, Player& player) {
 		cout << "  YOU CAN'T MOVE THAT WAY" << endl;
 
 		cout << "  PRESS ENTER TO CONTINUE...";
-		cin.ignore();
 		cin.get();
 	}
 }

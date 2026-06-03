@@ -68,8 +68,11 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 			cout << "  | [4] Flee                                |" << endl;
 			cout << "  +------------------------------------------+" << endl;
 			cout << "  SELECT: ";
-			cin >> playerMove;
-			cout << endl;
+			while (!(cin >> playerMove) || playerMove < 1 || playerMove > 4) {
+				cin.clear();                  // Clear error flags
+				cin.ignore(1000, '\n');      // Remove invalid input
+				cout << " Invalid input. Choose 1, 2, 3 or 4: ";
+			}
 
 			// Normal attack option
 			if (playerMove == 1) {
@@ -119,7 +122,12 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 					cout << "  SELECT ITEM (0 TO CANCEL): ";
 
 					int choice;
-					cin >> choice;
+
+					while (!(cin >> choice) || choice < 0 || choice > inventory.getSize()) {
+						cin.clear();                  // Clear error flags
+						cin.ignore(1000, '\n');      // Remove invalid input
+						cout << " Invalid input: ";
+					}
 
 					// Use selected item
 					if (choice != 0 && choice <= inventory.getSize()) {
@@ -148,8 +156,11 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 			cout << "  | [3] Flee                                |" << endl;
 			cout << "  +------------------------------------------+" << endl;
 			cout << "  SELECT: ";
-			cin >> playerMove;
-			cout << endl;
+			while (!(cin >> playerMove) || playerMove < 1 || playerMove > 3) {
+				cin.clear();                  // Clear error flags
+				cin.ignore(1000, '\n');      // Remove invalid input
+				cout << " Invalid input. Choose 1, 2 or 3: ";
+			}
 
 			// Normal attack
 			if (playerMove == 1) {
@@ -191,7 +202,11 @@ void Battle::startBattle(Player& player, Enemy& enemy) {
 					cout << "  SELECT ITEM (0 TO CANCEL): ";
 
 					int choice;
-					cin >> choice;
+					while (!(cin >> choice) || choice < 0 || choice > inventory.getSize()) {
+						cin.clear();                  // Clear error flags
+						cin.ignore(1000, '\n');      // Remove invalid input
+						cout << " Invalid input: ";
+					}
 
 					// Use selected item
 					if (choice != 0 && choice <= inventory.getSize()) {
